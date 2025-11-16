@@ -1,0 +1,15 @@
+name = "exam-upkk"
+main = "src/index.js"
+compatibility_date = "2025-11-08"
+
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
+[[kv_namespaces]]
+binding = "EXAM_DATA"
+id = "66e15b3eaef14af0bf301f046dcb16ba"
+
+[vars]
+ADMIN_PASSWORD = "!*aU6inQpCtgdkyz*H"

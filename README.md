@@ -1,0 +1,191 @@
+# Exam Tracker
+
+A beautiful, customizable exam progress tracker built with Cloudflare Workers + KV. Features an iOS-inspired liquid glass design, dual-language support (English/Malay), and an enhanced admin panel for easy management.
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/asrulmunir/examTracker)
+
+## ✨ Features
+
+- 🎨 Beautiful iOS liquid glass design
+- 🌍 **Dual-language support** (English/Malay)
+- 🔐 Enhanced admin panel with modal editor
+- 📊 Real-time progress tracking
+- 🔍 Search and filter functionality
+- 📍 Exam locations
+- ⚡ Quick add buttons for rapid exam creation
+- 📥 Bulk import/export functionality
+- 💾 Data stored in Cloudflare KV
+- 🚀 **Deploy in 5 minutes!**
+- 🌍 Open source - anyone can install their own
+- 💰 **FREE** on Cloudflare Workers
+
+## 🚀 Quick Deploy
+
+### Option 1: One-Click Deploy (Easiest!)
+See [ONE_CLICK_DEPLOY.md](ONE_CLICK_DEPLOY.md) for GitHub Actions deployment.
+
+**Steps:**
+1. Fork this repo
+2. Add Cloudflare API token to GitHub Secrets
+3. Run workflow with your password
+4. Done! ✨
+
+### Option 1.5: One-Click Update (For Existing Deployments)
+Already have a deployment? Update to v1.0.1 with one click!
+See [ONE_CLICK_UPDATE.md](ONE_CLICK_UPDATE.md) for easy updating.
+
+### Option 2: Interactive Setup Script
+```bash
+git clone <repo-url>
+cd examTracker
+npm install
+./setup.sh
+```
+
+The script will:
+- Login to Cloudflare
+- Create KV namespace automatically
+- Prompt for your password
+- Deploy everything
+
+### Option 3: Manual Deploy
+See [DEPLOY.md](DEPLOY.md) for step-by-step CLI instructions.
+
+## Demo
+
+**Live Demo:** https://exam-tracker.asrulmunir.workers.dev
+**Admin Panel:** https://exam-tracker.asrulmunir.workers.dev/admin
+(Password: changeme123)
+
+## Multiple Deployments
+
+Want to track different exams? Deploy multiple instances with different names:
+
+```bash
+# Deploy for SPM
+name = "spm-2025" in wrangler.toml
+→ https://spm-2025.YOUR-USERNAME.workers.dev
+
+# Deploy for STPM  
+name = "stpm-2025" in wrangler.toml
+→ https://stpm-2025.YOUR-USERNAME.workers.dev
+
+# Deploy for Finals
+name = "finals-tracker" in wrangler.toml
+→ https://finals-tracker.YOUR-USERNAME.workers.dev
+```
+
+Each deployment has its own:
+- ✅ Unique URL
+- ✅ Separate data storage
+- ✅ Independent admin panel
+- ✅ Own password
+
+## Usage
+
+### Public View
+Visit your deployed URL to see the exam tracker.
+
+### Admin Panel
+1. Go to `/admin`
+2. Login with your admin password
+3. Configure title and description
+4. Add/edit/delete exams
+5. Save changes
+
+## Updating
+
+### From v1.0.0 to v1.0.1
+
+#### Option A: One-Click Update (Easiest!)
+If you deployed using GitHub Actions, you can update with one click:
+
+1. **Find your KV Namespace ID:**
+   - Go to https://dash.cloudflare.com/
+   - Click **Workers & Pages** → **KV**
+   - Find your namespace (usually ends with `EXAM_DATA`)
+   - Copy the **Namespace ID** (looks like: `abc123def456...`)
+
+2. **Trigger the update:**
+   - Go to **Actions** tab in your forked repo
+   - Click **Update to Latest Version**
+   - Click **Run workflow**
+   - Enter your **existing worker name** (e.g., `spm-2025`)
+   - Enter your **KV Namespace ID**
+   - Click **Run workflow**
+
+**That's it!** Your deployment will be updated in ~1 minute with all new features.
+
+#### Option B: Manual Update
+If you prefer manual update:
+
+```bash
+# Pull latest changes
+git pull origin master
+
+# Redeploy (this will update your existing worker)
+npx wrangler deploy
+```
+
+**✅ What's preserved:**
+- Your existing KV namespace and data
+- Custom worker name
+- Admin password settings
+- All your exam data
+
+**✨ What's new in v1.0.1:**
+- 🌍 Dual-language support (English/Malay)
+- 🎨 Enhanced admin interface with modal editor
+- ⚡ Quick add buttons for rapid exam creation
+- 📥 Bulk import/export functionality
+- 🔧 Improved form validation and UX
+
+### General Updates
+
+Made changes to your local copy? Just redeploy:
+
+```bash
+npx wrangler deploy
+```
+
+## Configuration
+
+### Change Admin Password
+Edit `wrangler.toml`:
+```toml
+[vars]
+ADMIN_PASSWORD = "your-new-password"
+```
+
+Then redeploy:
+```bash
+npx wrangler deploy
+```
+
+## Exam Data Format
+
+```json
+{
+  "code": "EXAM001",
+  "name": "Mathematics Paper 1",
+  "date": "2025-12-01",
+  "time": "08:15",
+  "endTime": "10:15",
+  "category": "Core"
+}
+```
+
+## Customization
+
+- Change colors in the CSS gradient
+- Modify the liquid glass effect
+- Add custom categories
+- Adjust auto-refresh interval
+
+## License
+
+MIT - Feel free to use for your own exam tracking needs!
+
+## Support
+
+For issues or questions, please open an issue on GitHub.
